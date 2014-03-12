@@ -1,0 +1,6 @@
+/modules/*.js~
+
+/views/*.ejs~
+/routes/*.js~
+
+/public/css/*.css~

@@ -1,0 +1,336 @@
+@import url(http://fonts.googleapis.com/css?family=Alegreya+Sans:300,400,500,700,800,900);
+@import url(http://fonts.googleapis.com/css?family=Gloria+Hallelujah);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic,900,900italic,100italic,100);
+
+
+html,body{
+    height:100%;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+#leftSide{
+    background-color:rgb(36,49,55);
+    color:#ddd;
+    padding:0;
+    min-height:100%;
+    }
+
+#menu{
+    list-style: none;
+    padding:0;
+    }
+
+.loader{
+position: absolute;
+z-index: 300;
+margin-left: 35%;
+margin-top: 21%;
+    }
+
+
+#menu li{
+    width:100%;
+    padding-top: 15px;
+    padding-bottom:15px;
+    padding-left: 20px;
+    font-size:1.1em;
+    font-weight: bold;
+    }
+
+#menu li a{
+    color:#fff
+ }
+
+#menu li a:hover{
+    text-decoration: none;
+    color:#fff;
+}
+
+.learned{
+    position:absolute;
+    right:0;
+    top:0;
+    font-size:2em;
+    margin-right:20px;
+    margin-top:10px;
+}
+
+.l-ok{
+
+ border: 1px solid rgb(0,193,164);
+    border-radius:50%;
+    width:40px;
+    height:40px;
+    color:rgb(0,193,164)
+}
+
+#menu li:hover{
+    background-color:rgb(0,193,164);
+    -webkit-transition: background-color 500ms linear;
+    -moz-transition: background-color 500ms linear;
+    -o-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+    }
+
+.selected{
+    border-left: 3px solid rgb(0,193,164);
+}
+
+#contentSide{
+    padding-bottom:10px;
+    border-top: 1px solid #ccc;
+    padding: 0;
+    }
+#contentSide h2{
+    text-align:center;
+    color:white;
+  font-family: 'Roboto', sans-serif;
+
+    font-weight:300;
+    }
+
+#rightSide{
+    background-color:rgb(234,239,245);
+    padding:0;
+    min-height:100%;
+    }
+
+#logo{
+    margin: 20px;
+    color: #fff;
+    font-size:1.7em;
+    font-weight:bold;
+    font-family: 'Gloria Hallelujah', cursive;
+    }
+
+#logo img{
+    padding-right:10px;
+    }
+
+#statistics{
+    background-color: rgb(131,48,26);
+    }
+
+#ilc-progress{
+    background: url("http://seanpfowler.com/images/Beijing_Tiananman_Square_night.jpg");
+    background-size:cover;
+    background-position:center;
+    padding-bottom:20px
+    }
+
+.progress_meter {
+    position: relative;
+    display:inline-block;
+     width: 100px;
+      height: 100px;
+       margin: 0;
+        padding: 0;
+	 margin-left:34%;
+	 }
+
+.progress_meter ul {
+    list-style-type: none;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+     margin: 0;
+     }
+
+.progress_meter li {
+    position: absolute;
+    top: 0px;
+    width: 100px;
+    height: 100px;
+     padding: 0;
+      margin: 0;
+      }
+
+.progress_meter p {
+    width: 100px;
+    height: 100px;
+     padding: 0;
+      margin: 0;
+      }
+
+.progress_meter li p { -webkit-transition: all .7s ease-out;}
+
+.progress_meter span { display: block; width: 50px; height: 100px;}
+
+.progress_meter ul :nth-child(odd) { clip: rect(0px, 100px, 100px, 50px);}
+
+.progress_meter ul :nth-child(even) { clip: rect(0px, 50px, 100px, 0px);}
+
+.pie_left{
+    -moz-border-radius-topleft: 50px;
+    -moz-border-radius-bottomleft: 50px;
+    -webkit-border-top-left-radius: 50px;
+    -webkit-border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    }
+
+.pie_right{
+    margin-left: 50px;
+    -moz-border-radius-topright: 50px;
+    -moz-border-radius-bottomright: 50px;
+    -webkit-border-top-right-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    }
+
+.c1_l span,.c1_r span{ 
+    background: rgb(0,193,164);
+    }
+
+/* progress_meter data (degree value) */
+.progress_meter ul .c1_r p{ -moz-transform: rotate(180deg); -webkit-transform: rotate(180deg); -o-transform: rotate(180deg);}
+.progress_meter ul .c1_l p{ -moz-transform: rotate(90deg); -webkit-transform: rotate(90deg); -o-transform: rotate(90deg);}
+
+/* progress */
+.center-circle{
+    width:90px;height:90px;position:absolute;z-index:1000;top:5px;left:5px;background:#fff;text-align:center;
+    border-radius:50%;-moz-border-radius:50%;-webkit-border-radius:50%;-khtml-border-radius:50%;-o-border-radius:50%;
+    }
+.center-circle span{
+    display:inline-block;margin-top:50%;line-height:0;font-weight:bold;color:rgb(0,193,164);font-size:30px;
+    }
+
+#profile{
+    padding: 30px;
+    background-color: #fff;
+    font-weight:bold;
+    }
+
+#flashcards{
+    padding-left:50px;
+    padding-top:30px
+}
+
+#flashcards h2{
+        font-size: 10em;
+        margin-top:25px;
+        margin-bottom: 5px;
+        text-align:center;
+	color:#888;
+        }
+
+ #flashcards .tbl-chars{
+     margin-top:50px
+}
+
+
+         #flashcards .characters{
+	
+        list-style:none;
+        position:relative;
+        font-weight:bold;
+        padding:0;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+         #flashcards .characters li{
+        border: 1px solid #ccc;
+        cursor:pointer;
+        display: inline-block;
+        padding:5px;
+        background-color:white;
+        }
+
+
+         #flashcards .card{
+        text-align:center;
+         border:1px solid #888;
+         background-color: #eee;
+         position:relative;
+         -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -khtml-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+	 height: 500px;
+	 padding:0;
+        }
+
+	 .no-select{
+	  -webkit-touch-callout: none;
+         -webkit-user-select: none;
+         -khtml-user-select: none;
+         -moz-user-select: none;
+         -ms-user-select: none;
+         user-select: none;
+	 }
+
+	
+         #flashcards .open{
+        display: block;
+        }
+         #flashcards .close{
+        display: none;
+        }
+
+         #flashcards .back{
+
+        position:absolute;
+        width:100%;
+        height:100%;
+	padding:20px;
+	padding-top:100px;
+         background-color: #eee;
+        }
+
+         #flashcards .front{
+
+        position:absolute;
+	z-index:100;
+        width:100%;
+        height:100%;
+	padding:20px;
+         background-color: #eee;
+        }
+
+         #flashcards .fade{
+        opacity: 0;
+        }
+
+         #flashcards button{
+         margin-top:10px
+        }
+
+.dashboard-elem{
+background-color:#3498db;border-radius:10px;color:white;text-align:center;padding:10px;cursor:pointer;
+  border:2px solid #fff;
+ }
+
+.dashboard-elem:hover{
+    border:2px solid #2980b9
+}
+
+.dashboard-elem h4{
+    color:white;font-weight:300;
+}
+
+.dashboard-elem .p-inside{
+    font-size:2.5em;font-weight:400;background-color:white;border-radius:15px
+}
+
+
+.dashboard-elem .p-inside span{
+    color:#3498db;
+}
+
+
+
+.dashboard-elem .inside{
+    margin-top:5px;margin-bottom:5px;font-weight:bold;
+}
+
+.dashboard-elem .meter{
+    margin-top:5px;margin-bottom:15px;background-color:#2980b9;border-radius:20px;font-weight:bold;font-size:1.5em
+}
+

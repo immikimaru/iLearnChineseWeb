@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>ILC - <%= title %></title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <script src="/public/js/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+    </head>
+  <body>
+    <div id="leftSide" class="col-lg-2">
+      <div id="logo">
+	I Learn Chinese
+	</div>
+      <ul id="menu">
+	<li><a href="/">Home</a></li>
+	<li class="selected"><a href="/flashcards">Flashcards</a></li>
+	<li><a href="">Favorites</a></li>
+	<li><a href="/addHanzi">Add your own vocabulary</a></li>
+	<li><a href="/logout">Logout</a></li>
+	</ul>
+      <p style="padding-left:15px;margin-top:25px;font-size:0.9em"><i>Pour ma Yuan</i></p> 
+      <div id="statistics">
+	
+	</div>
+      </div>
+    <div id="contentSide" class="col-lg-8">
+      <div id="ilc-progress">
+	<div class="col-lg-3">
+	  <h2>HSK1</h2>
+	  <div class="progress_meter" id="stat-hsk1">
+	    <ul>
+	      <li class="c1_r"><p><span class="pie_left"></span></p></li>
+	      <li class="c1_l"><p><span class="pie_right"></span></p></li>
+	      </ul>
+	    <div class="center-circle">
+	      <span>0%</span>
+	      </div>
+	    </div>
+	  </div>
+	<div class="col-lg-3">
+	  <h2>HSK2</h2>
+	  <div class="progress_meter" id="stat-hsk2">
+	    <ul>
+	      <li class="c1_r"><p><span class="pie_left"></span></p></li>
+	      <li class="c1_l"><p><span class="pie_right"></span></p></li>
+	      </ul>
+	    <div class="center-circle">
+	      <span>0%</span>
+	      </div>
+	    </div>
+	  </div>
+	<div class="col-lg-3">
+	  <h2>HSK3</h2>
+	  <div class="progress_meter" id="stat-hsk3">
+	    <ul>
+	      <li class="c1_r"><p><span class="pie_left"></span></p></li>
+	      <li class="c1_l"><p><span class="pie_right"></span></p></li>
+	      </ul>
+	    <div class="center-circle">
+	      <span>0%</span>
+	      </div>
+	    </div>
+	  </div>
+	<div class="col-lg-3">
+	  <h2>HSK4</h2>
+	  <div class="progress_meter" id="stat-hsk4">
+	    <ul>
+	      <li class="c1_r"><p><span class="pie_left"></span></p></li>
+	      <li class="c1_l"><p><span class="pie_right"></span></p></li>
+	      </ul>
+	    <div class="center-circle">
+	      <span>0%</span>
+	      </div>
+	    </div>
+	  </div>
+	<div class="clearfix"></div>
+	</div>
+      <%- body %>
+      </div>
+    <div id="rightSide" class="col-lg-2">
+      <div id="profile" style="text-align:center">
+
+	 <% if (fname != '') { %>
+          <h2 style="margin-top:0;margin-bottom:20px;font-family: 'Roboto', sans-serif;font-weight:400;"> <%= fname %> </h2>
+            <% } %>
+	<div class="col-lg-6 col-lg-offset-3" style="padding:0">
+	  <% if (fbId != '0') { %>
+	  <img src="http://graph.facebook.com/<%= fbId %>/picture?type=large" style="border:5px solid #ddd;" class="img-responsive img-circle" >
+	  <% } else {  %>
+	  <img src="http://icons.iconarchive.com/icons/double-j-design/origami-colored-pencil/256/blue-user-icon.png" class="img-responsive img-circle" >
+	  <% } %>
+	  </div>
+	<div class="clearfix"></div>
+	</div>
+      <div id="history">
+	<div style="color:rgb(163,172,179);font-weight:bold;text-align:center;margin-top:5px">
+	  Today's history&nbsp;<span class="glyphicon glyphicon-chevron-down" ></span>
+	  </div>
+	</div>
+      </div>
+    <script>
+      $(document).ready(function(){
+      var percentage = 25;
+      var degree = 360 * (percentage/100);
+      console.log(degree);
+      $('#stat-hsk1 .center-circle span').text(percentage + "%");
+      if (degree < 180){
+		   $('#stat-hsk1 ul .c1_r p').css({
+		   "-moz-transform": "rotate("+degree+"deg)",
+		   "-webkit-transform": "rotate("+degree+"deg)",
+		   "-o-transform":"rotate("+degree+"deg)",
+		   "transform":"rotate("+degree+"deg)",
+		   });
+		    $('#stat-hsk1 ul .c1_l p').css({
+                   "-moz-transform": "rotate("+0+"deg)",
+                   "-webkit-transform": "rotate("+0+"deg)",
+                   "-o-transform":"rotate("+0+"deg)",
+                   "transform":"rotate("+0+"deg)"
+                   });
+
+		   }
+		   else{
+		   var left = degree - 180;
+		   $('#stat-hsk1 ul .c1_r p').css({
+		   "-moz-transform": "rotate (180deg)",
+		   "-webkit-transform": "rotate (180deg)",
+		   "-o-transform":"rotate (180deg)",
+		   "transform":"rotate (180deg)",
+		   });
+		   $('#stat-hsk1 ul .c1_l p').css({
+		   "-moz-transform": "rotate("+left+"deg)",
+		   "-webkit-transform": "rotate("+left+"deg)",
+		   "-o-transform":"rotate("+left+"deg)",
+		   "transform":"rotate("+left+"deg)"
+		   });
+		   }
+		   });
+		   </script>
+  </body>
+</html>

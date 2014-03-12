@@ -1,0 +1,59 @@
+<style>
+.add .form-control{
+     margin-top:5px;
+     margin-bottom:5px;
+}
+</style>
+
+<div style="padding:50px" class="add">
+<input class="form-control" type="text" id="chs" placeholder="Simplified Chinese">
+<input class="form-control" type="text" id="cht" placeholder="Traditional Chinese">
+<input class="form-control" type="text" id="pinyin" placeholder="Pinyin">
+<input class="form-control" type="text" id="translation_fr" placeholder="French">
+<input class="form-control" type="text" id="translation_en" placeholder="English">
+<input class="form-control" type="text" id="level" placeholder="Level">
+<input class="form-control" type="text" id="keys" placeholder="Keys">
+<input class="form-control" type="text" id="tags" placeholder="Tags">
+<button class="btn" id="validate">Add Hanzi</button>
+</div>
+<script>
+$(document).ready(function () {
+	$(document).on( 'click', '#validate',function(e){
+	  var empty = $(this).parent().find("input").filter(function() {
+        return this.value === "";
+    });
+    if(empty.length) {
+       alert("At least one field is not filled");
+    }
+    else
+    {
+	var hanzi = 
+    	{
+	    chs: $("#chs").val(),
+            cht: $("#cht").val(),
+            pinyin: $("#pinyin").val(),
+            translation_fr: $("#translation_fr").val(),
+            translation_en: $("#translation_en").val(),
+            level: $("#level").val(),
+            keys: $("#keys").val(),
+	    tags: $("#tags").val()
+    	};
+	
+	console.log(hanzi);
+
+	$.ajax({
+		type: "POST",
+  		url: "/hanzi",
+  		data: JSON.stringify(hanzi),
+		contentType: 'application/json; charset=utf-8',
+  		dataType: 'json',
+		async: false
+	});
+    }
+
+	});
+});
+</script>
+
+
+
