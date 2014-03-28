@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ILC - <%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/dist/ilc.min.css">
+</head>
+
+<body>
+
+	<header id="main-header">
+
+		    <nav class="navbar navbar-default" role="navigation">
+		       
+		        <div class="container-fluid">
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		                    <span class="sr-only">Toggle navigation</span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                </button>
+		                <a class="navbar-brand" href="/">iLearnChinese <span class="reg">&reg;</span></a>
+		            </div>
+
+		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		                <ul class="nav navbar-nav">
+		                    <li><a href="/"><span class="menu-title">Dashboard</span><br>Your overall activity</a></li>
+		                    <li><a href="/flashcards"><span class="menu-title">Flashcards</span><br>Learn new words</a></li>
+		                    <li><a href="/addHanzi"><span class="menu-title">Dictionnary</span><br>Search for words</a></li>
+		                </ul>
+		                <ul class="nav navbar-nav navbar-right">
+		                	<li class="ajst">
+		                		<a href="/logout">
+				                	<div class="ilc-head-icon-circle img-circle">
+				                		<span class="glyphicon glyphicon-off"></span>
+				                	</div>
+		                		</a>
+		                	</li>
+		                	<li class="ajst">
+		                		<a href="#">
+				                	<div class="ilc-head-icon-circle img-circle">
+				                		<span class="glyphicon glyphicon-info-sign"></span>
+				                	</div>
+		                		</a>
+		                	</li>
+		                	<li class="ajst">
+		                		<a href="#">
+				                	<div class="ilc-head-icon">
+				                		<span class="glyphicon glyphicon-bell"></span>
+				                		<div class="count img-circle">3</div>
+				                	</div>
+		                		</a>
+		                	</li>
+		                    <li>
+		                		<a href="#">
+		                    		<div class="pull-left"><img src="http://graph.facebook.com/<%= fbId %>/picture?type=large" style="width:40px" class="img-responsive img-circle"></div>
+		                    		<div class="pull-right ajst" style="padding-left:10px;font-size:0.9em;font-weight:bold"><%= fname %></div>
+		                    		<div class="clearfix"></div>
+		                    	</a>
+		                    </li>
+		                </ul>
+		            </div>
+		            <!-- /.navbar-collapse -->
+		        </div>
+
+		    </nav>
+
+	</header>
+
+	<section id="menu-left">
+		<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 menu">
+			<h1>Dashboard</h1>
+			<ul>
+				<li>
+					<a href="#">
+						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-stats"></span></div>
+						<div class="col-lg-10 text">Your progression</div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-user"></span></div>
+						<div class="col-lg-10 text">ILC Members</div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-link"></span></div>
+						<div class="col-lg-10 text">Useful links</div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-comment"></span></div>
+						<div class="col-lg-10 text">Chat</div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+				<li class="active">
+					<a href="#">
+						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-inbox"></span></div>
+						<div class="col-lg-10 text">Messages &nbsp;<span class="badge">42</span></div>
+						<div class="clearfix"></div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 content">
+		  <%- body %>
+		</div> 
+		<div class="clearfix"></div>
+	</section>
+
+	<!-- SCRIPTS -->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="/public/dist/ilc.js"></script>
+    <% if (load.length > 0) { %>
+    <script src="/public/dist/<%=load%>"></script>
+    <% } %>
+</body>
+
+</html>

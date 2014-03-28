@@ -50,12 +50,17 @@ exports.findByLevel = function(req, res) {
 
 exports.randomOne = function(req, res) {
     console.log('Random');
+    var level = req.params.level;
     db.collection('hanzi', function(err, collection) {
-	collection.find().limit(-1).skip(1556415646546).next().toArray(function(err, items) {
-        // collection.find().toArray(function(err, items) {
-            res.send(items);
+	collection.find({level:level}).count(function(err, count) {
+	    var nb = Math.floor(Math.random()*(count));
+            console.log("NUMBER"+nb);
+            collection.find({level:level}).limit(-1).skip(nb).next(function(err, item) {
+		res.send(item);
+            });
         });
     });
+
 };
  
 exports.addHanzi = function(req, res) {
