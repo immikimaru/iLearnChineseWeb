@@ -4,3 +4,4 @@
 /routes/*.js~
 
 /public/css/*.css~
+node_modules
