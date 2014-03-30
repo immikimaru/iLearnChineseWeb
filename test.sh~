@@ -1,1 +1,0 @@
-cp -r * /root/ILCGIT/;cd /root/ILCGIT/;git commit -a -m "automatic update";git push

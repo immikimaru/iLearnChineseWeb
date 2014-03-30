@@ -1,1 +1,0 @@
-cp -r * /root/ILCGIT/iLearnChineseWeb/;cd /root/ILCGIT/iLearnChineseWeb/;git commit -a -m "automatic update";git push
