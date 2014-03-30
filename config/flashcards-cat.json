@@ -1,25 +1,24 @@
 {
-
-	"categories : [
-			{	   
-				"levelName":"HSK-1",
-				"tagName":"HSK1",
-				"levelDesc":"StartEasy"	
-			},
-			{
-				"levelName":"HSK-2",
-                        	"tagName":"HSK1",
-                        	"levelDesc":"StartEasy"
-                	},
-			{
-				"levelName":"HSK-3",
-                        	"tagName":"HSK1",
-                        	"levelDesc":"StartEasy"
-                	},
-			{
-				"levelName":"U-1",
-                        	"tagName":"U3",
-                        	"levelDesc":"Useful Language 1"
-         		}
-		       ]
+    "categories": [
+        {
+            "levelName": "HSK-1",
+            "tagName": "HSK1",
+            "levelDesc": "StartEasy"
+        },
+        {
+            "levelName": "HSK-2",
+            "tagName": "HSK1",
+            "levelDesc": "StartEasy"
+        },
+        {
+            "levelName": "HSK-3",
+            "tagName": "HSK1",
+            "levelDesc": "StartEasy"
+        },
+        {
+            "levelName": "U-1",
+            "tagName": "U3",
+            "levelDesc": "UsefulLanguage1"
+        }
+    ]
 }

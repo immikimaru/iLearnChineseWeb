@@ -57,7 +57,6 @@ exports.findAll = function(req, res) {
 
 exports.findByLevel = function(req, res) {
     var level = req.params.level;
-    console.log(level);
     db.collection('hanzi', function(err, collection) {
         collection.find({level:level}).toArray(function(err, items) {
 	    console.log(items);
@@ -67,15 +66,12 @@ exports.findByLevel = function(req, res) {
 };
 
 exports.randomOne = function(req, res) {
-    console.log('Random');
     var level = req.params.level;
     db.collection('hanzi', function(err, collection) {
 	collection.find({level:level}).count(function(err, count) {
 	    var nb = Math.floor(Math.random()*(count));
-            console.log("NUMBER "+nb);
             collection.find({level:level}).limit(-1).skip(nb).next(function(err, item) {
 		isLearned(item._id,req.params.userid,function(ret){
-		    console.log(ret);
 		    if (ret)
 			item.isLearned = true;
 		    res.send(item);
@@ -83,7 +79,6 @@ exports.randomOne = function(req, res) {
             });
         });
     });
-
 };
  
 exports.addHanzi = function(req, res) {
@@ -136,7 +131,6 @@ exports.deleteHanzi = function(req, res) {
  
 /*--------------------------------------------------------------------------------------------------------------------*/
 // Populate database with sample data -- Only used once: the first time the application is started.
-// You'd typically not find this code in a real-life app, since the database would already exist.
 var populateDB = function() {
  
     var hanzi = [

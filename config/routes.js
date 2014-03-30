@@ -1,4 +1,4 @@
-module.exports = function(app, passport,hanzi) {
+module.exports = function(app, passport,hanzi,flashcardscat) {
 
     //API
     app.get('/hanzi', ensureAuthenticated, hanzi.findAll);
@@ -21,34 +21,38 @@ module.exports = function(app, passport,hanzi) {
         }
         else
         {
-            res.render('view.ejs',{uid:req.user._id}, function(err, html){
-
-                var data = {
-                    title: 'I learn Chinese',
-                    body: html,
-		    fbId:req.user.fbId,
-                    userId:req.user._id,
-                    fname:req.user.name,
-                    load:''
-                };
-                res.render('dashboard.ejs', data);
-            });
+            var data = {
+                title: 'I learn Chinese',
+                body: '',
+		fbId:req.user.fbId,
+                userId:req.user._id,
+                fname:req.user.name,
+                load:''
+            };
+            res.render('dashboard.ejs', data);
         }
     });
 
+    app.get('/flashcards',ensureAuthenticated, function(req, res){
+        res.render('view.ejs',{uid:req.user._id,cat:flashcardscat}, function(err, html){ 
+            var data = {
+                title: 'I learn Chinese',
+                body: html,
+                fbId:req.user.fbId,
+                userId:req.user._id,
+                fname:req.user.name,
+                load:''
+            };
+            res.render('dashboard.ejs', data);
+        });
+    });
+       
     app.get('/flashcards/level/:idLevel',ensureAuthenticated, function(req, res){
         getUser(db,req,res,function(user){
-            //console.log(user);
             res.render('card.ejs',{user:user, idLevel:req.params.idLevel}, function(err, html){
-
                 var data =  {
                     bodycard: html,
-		    fbId:req.user.fbId,
-                    userId:req.user._id,
-                    fname:req.user.name,
                 };
-
-
                 res.render('flashcards.ejs',{user:user, idLevel:req.params.idLevel,bodycard:data.bodycard}, function(err, html){
 		    if (err)
 			console.log(err);
@@ -60,7 +64,6 @@ module.exports = function(app, passport,hanzi) {
                         fname:req.user.name,
                         load:'flashcards.js'
                     };
-
                     res.render('dashboard.ejs', data);
                 });
             });
