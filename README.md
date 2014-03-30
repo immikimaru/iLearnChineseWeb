@@ -10,6 +10,10 @@ You just have to add ./config/env.json with following parameters:
 
 ```
 {
+    "session":{
+        "key" :"NAME OF YOUR KEY",
+        "secret" : "SECRET",
+    },
     "facebook":{
         "clientID": "YOUR CLIENT ID",
         "clientSecret": "YOUR CLIENT SECRET",
