@@ -9,113 +9,110 @@
 </head>
 
 <body>
-
 	<header id="main-header">
-
 		    <nav class="navbar navbar-default" role="navigation">
 		       
-		        <div class="container-fluid">
-		            <div class="navbar-header">
-		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-		                    <span class="sr-only">Toggle navigation</span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                    <span class="icon-bar"></span>
-		                </button>
-		                <a class="navbar-brand" href="/">iLearnChinese <span class="reg">&reg;</span></a>
-		            </div>
-
-		            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		                <ul class="nav navbar-nav">
-		                    <li><a href="/"><span class="menu-title">Dashboard</span><br>Your overall activity</a></li>
-		                    <li><a href="/flashcards"><span class="menu-title">Flashcards</span><br>Learn new words</a></li>
-		                    <li><a href="/dictionary"><span class="menu-title">Dictionary</span><br>Search words</a></li>
-		                </ul>
-		                <ul class="nav navbar-nav navbar-right">
-		                	<li class="ajst">
-		                		<a href="/logout">
-				                	<div class="ilc-head-icon-circle img-circle">
-				                		<span class="glyphicon glyphicon-off"></span>
-				                	</div>
-		                		</a>
-		                	</li>
-		                	<li class="ajst">
-		                		<a href="#">
-				                	<div class="ilc-head-icon-circle img-circle">
-				                		<span class="glyphicon glyphicon-info-sign"></span>
-				                	</div>
-		                		</a>
-		                	</li>
-		                	<li class="ajst">
-		                		<a href="#">
-				                	<div class="ilc-head-icon">
-				                		<span class="glyphicon glyphicon-bell"></span>
-				                		<div class="count img-circle">3</div>
-				                	</div>
-		                		</a>
-		                	</li>
-		                    <li>
-		                		<a href="#">
-		                    		<div class="pull-left"><img src="http://graph.facebook.com/<%= fbId %>/picture?type=large" style="width:40px" class="img-responsive img-circle"></div>
-		                    		<div class="pull-right ajst" style="padding-left:10px;font-size:0.9em;font-weight:bold"><%= fname %></div>
-		                    		<div class="clearfix"></div>
-		                    	</a>
-		                    </li>
-		                </ul>
-		            </div>
-		            <!-- /.navbar-collapse -->
+		      <div class="container-fluid">
+		        <div class="navbar-header">
+		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		            <span class="sr-only">Toggle navigation</span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		            <span class="icon-bar"></span>
+		          </button>
+		          <a class="navbar-brand" href="/">iLearnChinese <span class="reg">&reg;</span></a>
 		        </div>
 
+		        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		          <ul class="nav navbar-nav">
+		            <li><a href="/"><span class="menu-title">Dashboard</span><br>Your overall activity</a></li>
+		            <li><a href="/flashcards"><span class="menu-title">Flashcards</span><br>Learn new words</a></li>
+		            <li><a href="/dictionary"><span class="menu-title">Dictionary</span><br>Search words</a></li>
+		          </ul>
+		          <ul class="nav navbar-nav navbar-right">
+		            <li class="ajst">
+		              <a href="/logout">
+				<div class="ilc-head-icon-circle img-circle">
+				  <span class="glyphicon glyphicon-off"></span>
+				</div>
+		              </a>
+		            </li>
+		            <li class="ajst">
+		              <a href="#" data-toggle="modal" data-target="#info-modal">
+				<div class="ilc-head-icon-circle img-circle">
+				  <span class="glyphicon glyphicon-info-sign"></span>
+				</div>
+		              </a>
+		            </li>
+		            <li class="ajst">
+		              <a href="#">
+				<div class="ilc-head-icon">
+				  <span class="glyphicon glyphicon-bell"></span>
+				  <div class="count img-circle">3</div>
+				</div>
+		              </a>
+		            </li>
+		            <li>
+		              <a href="#">
+		                <div class="pull-left"><img src="http://graph.facebook.com/<%= fbId %>/picture?type=large" style="width:40px" class="img-responsive img-circle"></div>
+		                <div class="pull-right ajst" style="padding-left:10px;font-size:0.9em;font-weight:bold"><%= fname %></div>
+		                <div class="clearfix"></div>
+		              </a>
+		            </li>
+		          </ul>
+		        </div>
+			
+		      </div>
+		      
 		    </nav>
-
+		    
 	</header>
 
 	<section id="menu-left">
-		<div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 menu">
-			<h1>Dashboard</h1>
-			<ul>
-				<li>
-					<a href="#">
-						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-stats"></span></div>
-						<div class="col-lg-10 text">Your progression</div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-user"></span></div>
-						<div class="col-lg-10 text">ILC Members</div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-link"></span></div>
-						<div class="col-lg-10 text">Useful links</div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-comment"></span></div>
-						<div class="col-lg-10 text">Chat</div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-				<li class="active">
-					<a href="#">
-						<div class="col-lg-2 icon"><span class="glyphicon glyphicon-inbox"></span></div>
-						<div class="col-lg-10 text">Messages &nbsp;<span class="badge">42</span></div>
-						<div class="clearfix"></div>
-					</a>
-				</li>
-			</ul>
-		</div>
-		<div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 content">
-		  <%- body %>
-		</div> 
-		<div class="clearfix"></div>
+	  <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 menu">
+	    <h1><%= title %></h1>
+	    <ul>
+	      <% for(var i=0; i<menu.length; i++) {%>
+		 <li>
+                   <a href="<%=menu[i].link%>">
+                     <div class="col-lg-2 icon"><span class="glyphicon <%=menu[i].icon%>"></span></div>
+                     <div class="col-lg-10 text">
+		       <%=menu[i].name%>
+		       <% if (typeof menu[i].count !== 'undefined') {%>
+		       &nbsp;<span class="badge"><%=menu[i].count%></span>
+		       <% } %>
+		     </div>
+                     <div class="clearfix"></div>
+                   </a>
+                 </li>
+		 <% } %>
+	    </ul>
+	  </div>
+	  <div class="col-lg-10 col-md-9 col-sm-8 col-xs-12 content">
+	    <%- body %>
+	  </div> 
+	  <div class="clearfix"></div>
 	</section>
+
+	 <!-- INFO MODAL -->
+        <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-label" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="info-modal-label">Informations</h4>
+              </div>
+              <div class="modal-body">
+                <p><b>ILearnChinese</b> is only developed by one people. Please report any bug you see!<p>
+		<p>If you like my work, send me one little message, I'll read it with pleasure...</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 	<!-- SCRIPTS -->
     <input type="hidden" id="userId" name="userId" value="<%- userId %>">

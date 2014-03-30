@@ -5,6 +5,7 @@
 var express = require('express')
 , engine = require('ejs').__express
 , config = require('./config/env.json')
+, menu = require('./config/menu.json')
 , flashcardscat = require('./config/flashcards-cat.json')
 , app = express()
 , mongo = require('mongodb')
@@ -60,7 +61,7 @@ db.open(function(err, db) {
     }
 });
 
-require('./config/routes.js')(app, passport,hanzi,flashcardscat);   
+require('./config/routes.js')(app, passport,hanzi,flashcardscat,menu);   
 app.listen(8088);
 console.log('Listening on port '.grey + app.get('port'));
 console.log('App launched'.green.bold);

@@ -1,0 +1,44 @@
+{
+    "Dashboard": [
+        {
+            "name": "Your progression",
+            "link": "#",
+	    "icon": "glyphicon-stats"
+        },
+        {
+            "name": "ILC Members",
+            "link": "#",
+	    "icon": "glyphicon-user"
+        },
+        {
+            "name": "Useful Links",
+            "link": "#",
+	    "icon": "glyphicon-link"
+        },
+        {
+            "name": "Chat",
+            "link": "#",
+	    "icon": "glyphicon-comment"
+        },
+        {
+            "name": "Messages",
+            "link": "#",
+	    "icon": "glyphicon-inbox",
+	    "count" : 42
+        }
+    ],
+    "Flashcards": [
+        {
+            "name": "Add category",
+            "link": "#",
+	    "icon": "glyphicon-link"
+        }
+    ],
+    "Dictionary": [
+        {
+            "name": "Add word",
+            "link": "#",
+	    "icon": "glyphicon-link"
+        }
+    ]
+}

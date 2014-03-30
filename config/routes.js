@@ -1,4 +1,4 @@
-module.exports = function(app, passport,hanzi,flashcardscat) {
+module.exports = function(app, passport,hanzi,flashcardscat,menu) {
 
     //API
     app.get('/api/hanzi', ensureAuthenticated, hanzi.findAll);
@@ -22,15 +22,17 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
         }
         else
         {
+	    console.log(menu.Dashboard);
             var data = {
-                title: 'I learn Chinese',
+                title: 'Dashboard',
                 body: '',
 		fbId:req.user.fbId,
                 userId:req.user._id,
                 fname:req.user.name,
-                load:''
+                load:'',
+		menu:menu.Dashboard
             };
-            res.render('dashboard.ejs', data);
+            res.render('dashboard.ejs',data);
         }
     });
 
@@ -38,12 +40,13 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
     app.get('/flashcards',ensureAuthenticated, function(req, res){
         res.render('view.ejs',{uid:req.user._id,cat:flashcardscat}, function(err, html){ 
             var data = {
-                title: 'I learn Chinese',
+                title: 'Flashcards',
                 body: html,
                 fbId:req.user.fbId,
                 userId:req.user._id,
                 fname:req.user.name,
-                load:''
+                load:'',
+		menu:menu.Flashcards
             };
             res.render('dashboard.ejs', data);
         });
@@ -81,7 +84,8 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
                 fbId:req.user.fbId,
                 userId:req.user._id,
                 fname:req.user.name,
-                load:'dictionary.js'
+                load:'dictionary.js',
+		menu:menu.Dictionary
             };
             res.render('dashboard.ejs', data);
         });
