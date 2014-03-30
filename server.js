@@ -28,7 +28,7 @@ app.configure(function () {
     app.use( express.favicon(__dirname + '/public/img/favicon.ico') );
     app.use( express.cookieParser() );
     app.use(express.session({
-	key: config.session.key,
+	key:config.session.key,
 	secret: config.session.secret,
 	store: new RedisStore({
             host: 'localhost',
