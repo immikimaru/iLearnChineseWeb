@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                 command : 'rm -rf public/css/concat.css;'
             },
 	    commit : {
-		command : 'cp -r * /root/ILCGIT/iLearnChineseWeb/;cd /root/ILCGIT/iLearnChineseWeb/;git add . && \ ; git add -u && \ ;git commit -a -m "automatic update";git push'
+		command : 'cp -r * /root/ILCGIT/iLearnChineseWeb/;cd /root/ILCGIT/iLearnChineseWeb/;git pull;git add . && \ ; git add -u && \ ;git commit -a -m "automatic update";git push'
 	    }
 	},
 	concat: {
