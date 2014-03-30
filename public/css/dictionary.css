@@ -1,0 +1,26 @@
+section#dictionary{
+    padding:5px 15px 15px 15px;
+}
+
+section#dictionary .word{
+    padding:10px;
+    margin-top:10px;
+    border:1px solid #ddd;
+    background-color:#fff;
+    font-size:1.2em;
+    font-weight:bold;
+    color:#555;
+}
+
+section#dictionary h3{
+    margin:0;
+    margin-top:5px;
+    margin-bottom: 15px;
+    padding:0;
+}
+
+section#dictionary .col-lg-6{
+    padding-left : 0;
+}
+
+

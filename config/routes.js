@@ -1,7 +1,7 @@
 module.exports = function(app, passport,hanzi,flashcardscat) {
 
     //API
-    app.get('/hanzi', ensureAuthenticated, hanzi.findAll);
+    app.get('/api/hanzi', ensureAuthenticated, hanzi.findAll);
     app.get('/api/:userid/level/:level', ensureAuthenticated, hanzi.randomOne);
     app.get('/hanzi/:id', ensureAuthenticated, hanzi.findById);
     app.post('/hanzi', ensureAuthenticated, hanzi.addHanzi);
@@ -34,6 +34,7 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
         }
     });
 
+    //Flashcards
     app.get('/flashcards',ensureAuthenticated, function(req, res){
         res.render('view.ejs',{uid:req.user._id,cat:flashcardscat}, function(err, html){ 
             var data = {
@@ -58,7 +59,7 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
 		    if (err)
 			console.log(err);
                     var data = {
-                        title: 'ILC - Flashcards',
+                        title: 'Flashcards',
                         body: html,
                         userId:req.user._id,
 			fbId : req.user.fbId,
@@ -71,6 +72,22 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
         });
     });
 
+    //Dictionary
+    app.get('/dictionary',ensureAuthenticated, function(req, res){
+        res.render('dictionary.ejs',{uid:req.user._id}, function(err, html){
+            var data = {
+                title: 'Dictionary',
+                body: html,
+                fbId:req.user.fbId,
+                userId:req.user._id,
+                fname:req.user.name,
+                load:'dictionary.js'
+            };
+            res.render('dashboard.ejs', data);
+        });
+    });
+
+    //Add vocabulary
     app.get('/addHanzi',ensureAuthenticated, function(req, res){
 
         res.render('addHanzi.ejs', function(err, html){
