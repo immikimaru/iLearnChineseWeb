@@ -6,9 +6,12 @@ function loadNewCard(level,userId){
 	$( '.ilc-card #hanziId').val(data._id);
 	if (data.isLearned){
 	    $( '.ilc-card .title').addClass( "isLearned" );
+	    $('.ilc-card #learned').attr("disabled", "disabled");
 	}
-	else
+	else{
 	    $( '.ilc-card .title').removeClass( "isLearned" );
+	    $('.ilc-card #learned').removeAttr("disabled");
+	}
     });
 }
 
