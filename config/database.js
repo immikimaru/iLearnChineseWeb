@@ -12,6 +12,6 @@ module.exports = function(mongoose) {
             id: { type: [String] }
 	}]
     });
-    var FbUsers = mongoose.model('fbs',FacebookUserSchema);
 
+    var FbUsers = mongoose.model('fbs',FacebookUserSchema);
 };

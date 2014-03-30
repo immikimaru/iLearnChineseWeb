@@ -2,7 +2,7 @@ module.exports = function(app, passport,hanzi) {
 
     //API
     app.get('/hanzi', ensureAuthenticated, hanzi.findAll);
-    app.get('/hanzi/level/:level', ensureAuthenticated, hanzi.randomOne);
+    app.get('/api/:userid/level/:level', ensureAuthenticated, hanzi.randomOne);
     app.get('/hanzi/:id', ensureAuthenticated, hanzi.findById);
     app.post('/hanzi', ensureAuthenticated, hanzi.addHanzi);
     app.put('/hanzi/:id', ensureAuthenticated,hanzi.updateHanzi);
@@ -26,7 +26,8 @@ module.exports = function(app, passport,hanzi) {
                 var data = {
                     title: 'I learn Chinese',
                     body: html,
-                    fbId:req.user.fbId,
+		    fbId:req.user.fbId,
+                    userId:req.user._id,
                     fname:req.user.name,
                     load:''
                 };
@@ -37,23 +38,25 @@ module.exports = function(app, passport,hanzi) {
 
     app.get('/flashcards/level/:idLevel',ensureAuthenticated, function(req, res){
         getUser(db,req,res,function(user){
-            console.log('dsd');
+            //console.log(user);
             res.render('card.ejs',{user:user, idLevel:req.params.idLevel}, function(err, html){
 
                 var data =  {
                     bodycard: html,
-                    fbId:req.user.fbId,
+		    fbId:req.user.fbId,
+                    userId:req.user._id,
                     fname:req.user.name,
                 };
 
 
                 res.render('flashcards.ejs',{user:user, idLevel:req.params.idLevel,bodycard:data.bodycard}, function(err, html){
-
-                    console.log(err);
+		    if (err)
+			console.log(err);
                     var data = {
                         title: 'ILC - Flashcards',
                         body: html,
-                        fbId:req.user.fbId,
+                        userId:req.user._id,
+			fbId : req.user.fbId,
                         fname:req.user.name,
                         load:'flashcards.js'
                     };
@@ -71,7 +74,7 @@ module.exports = function(app, passport,hanzi) {
             var data = {
                 title: 'Add Vocabulary',
                 body: html,
-                fbId:req.user.fbId,
+                user_id:req.user._id,
                 fname:req.user.name
             };
 
@@ -93,11 +96,9 @@ function ensureAuthenticated(req, res, next) {
 }
 
 function getUser(db, req,res, callback){
-    console.log("req: " + req);
     db.collection('fbs', function(err, collection) {
         collection.findOne({fbId : req.user.fbId}, function(err, oldUser) {
             if(oldUser){
-                console.log(oldUser);
                 res.locals.user = oldUser;
                 callback(oldUser);
             }

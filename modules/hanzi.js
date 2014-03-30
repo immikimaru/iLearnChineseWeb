@@ -1,3 +1,16 @@
+function isLearned(idHanzi, idUser,callback) {
+    console.log('Checking if hanzi: ' + idHanzi + " is learned by " + idUser);
+    db.collection('fbs', function(err, collection) {
+        collection.find( {_id:new BSON.ObjectID(idUser),learned:idHanzi.toString()}).toArray(function(err,item ){
+            if (err)
+                console.log(err);
+            if (item.length > 0)
+                callback(true);
+            else
+                callback(false);
+        });
+    });
+};
  
 exports.findById = function(req, res) {
     var id = req.params.id;
@@ -9,21 +22,26 @@ exports.findById = function(req, res) {
     });
 };
 
-
 exports.addHanziToUser = function(req, res) {
     var uid = req.params.userid;
     var hid = req.params.hid;
 
-    console.log("Add learned Hanzi with id:"+ hid + " to user:" + uid);
+    console.log("Requesting learning Hanzi with id:"+ hid + "for user:" + uid);
     db.collection('fbs', function(err, collection) {
-	collection.findOne( { learned: { $in: [hid] } }, function(err,item ){
-	    if (item != null)
-		console.log("Already Learned !")
-	    else {
+	if (err)
+	    console.log(err);
+	isLearned(hid,uid,function(ret){
+	    if (!ret){
 		collection.update({'_id':new BSON.ObjectID(uid)}, {$push:{learned: hid}}, function(err, result) {
-		    console.log(result);
+		    if (err)
+			throw err;
+		    console.log("User "+ uid +" just learned " + hid);
+		    res.send(result);
 		});
-		console.log(item);
+	    }
+	    else{
+		console.log(hid + "Already learned by " + uid);
+		res.send(null);
 	    }
 	});
     });
@@ -54,9 +72,14 @@ exports.randomOne = function(req, res) {
     db.collection('hanzi', function(err, collection) {
 	collection.find({level:level}).count(function(err, count) {
 	    var nb = Math.floor(Math.random()*(count));
-            console.log("NUMBER"+nb);
+            console.log("NUMBER "+nb);
             collection.find({level:level}).limit(-1).skip(nb).next(function(err, item) {
-		res.send(item);
+		isLearned(item._id,req.params.userid,function(ret){
+		    console.log(ret);
+		    if (ret)
+			item.isLearned = true;
+		    res.send(item);
+		});
             });
         });
     });

@@ -8,7 +8,9 @@ var express = require('express')
 , FacebookStrategy = require('passport-facebook').Strategy
 , RedisStore = require('connect-redis')(session)
 , hanzi  = require('./modules/hanzi')
-, data = require('./config/database.js')(mongoose);
+, data = require('./config/database.js')(mongoose)
+, colors = require('colors');
+
 
 Server = mongo.Server,
 Db = mongo.Db,
@@ -40,14 +42,14 @@ app.configure(function () {
 db = new Db('hanzidb', new Server("127.0.0.1", 27017, {auto_reconnect: true}), {safe: true});
 db.open(function(err, db) {
     if(!err) {
-        console.log("Connected to 'ILC' database");
+        console.log("Connected to 'ILC' database".cyan);
         db.collection('hanzi', {strict:true}, function(err, collection) {
             if (collection == null) {
                 console.log("The 'hanzi' collection doesn't exist. Creating it with sample data...");
                 populateDB();
             }
 	    else{
-		require('./config/passport')(passport);		
+		require('./config/passport')(passport,mongoose);		
 	    }
         });
     }
@@ -55,4 +57,5 @@ db.open(function(err, db) {
 
 require('./config/routes.js')(app, passport,hanzi);   
 app.listen(8088);
-console.log('Listening on port '+ app.get('port'));
+console.log('Listening on port '.grey + app.get('port'));
+console.log('App launched'.green.bold);

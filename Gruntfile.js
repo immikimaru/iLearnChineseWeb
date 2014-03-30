@@ -11,7 +11,10 @@ module.exports = function(grunt) {
             },
 	    cleanconcat : {
                 command : 'rm -rf public/css/concat.css;'
-            }
+            },
+	    commit : {
+		command : 'cp -r * /root/ILCGIT/;cd /root/ILCGIT/;git commit -a -m "automatic update";git push'
+	    }
 	},
 	concat: {
 	    js: {
@@ -40,6 +43,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-css');
 
     grunt.registerTask('build', ['shell:clean','concat','cssmin','shell:cleanconcat','shell:startserver']);
+    grunt.registerTask('commit', ['shell:clean','concat','cssmin','shell:cleanconcat','shell:commit']);
     // Définition des tâches Grunt
     grunt.registerTask('default', '')
 }
