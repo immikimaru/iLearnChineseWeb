@@ -230,10 +230,10 @@ section#menu-left .menu ul {
   list-style: none;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1em;
 }
 section#menu-left .menu ul li {
-  padding: 20px;
+  padding: 20px 0px 20px 0px;
 }
 section#menu-left .menu ul li .icon {
   font-size: 1.2em;

@@ -46,6 +46,33 @@ exports.addHanziToUser = function(req, res) {
 	});
     });
 };
+
+exports.removeHanziToUser = function(req, res) {
+    var uid = req.params.userid;
+    var hid = req.params.hid;
+
+    console.log("Requesting remove learning Hanzi with id:"+ hid + "for user:" + uid);
+    db.collection('fbs', function(err, collection) {
+        if (err)
+            console.log(err);
+        isLearned(hid,uid,function(ret){
+	    console.log(ret);
+            if (ret){
+                collection.update({'_id':new BSON.ObjectID(uid)}, {$pull:{learned: hid}}, function(err, result) {
+                    if (err)
+                        throw err;
+                    console.log("User "+ uid +" just removed learned " + hid);
+                    res.send(result);
+                });
+            }
+            else{
+                console.log(hid + "Not learned by " + uid);
+                res.send(null);
+            }
+        });
+    });
+};
+
  
 exports.findAll = function(req, res) {
     db.collection('hanzi', function(err, collection) {

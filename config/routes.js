@@ -8,6 +8,7 @@ module.exports = function(app, passport,hanzi,flashcardscat) {
     app.put('/hanzi/:id', ensureAuthenticated,hanzi.updateHanzi);
     app.delete('/hanzi/:id', ensureAuthenticated,hanzi.deleteHanzi);
     app.post('/api/:userid/addLearned/:hid',ensureAuthenticated, hanzi.addHanziToUser);
+    app.post('/api/:userid/removeLearned/:hid',ensureAuthenticated, hanzi.removeHanziToUser);
 
     //Facebook
     app.get('/auth/facebook', passport.authenticate('facebook',{ scope : "email"}));

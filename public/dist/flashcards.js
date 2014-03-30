@@ -7,10 +7,12 @@ function loadNewCard(level,userId){
 	if (data.isLearned){
 	    $( '.ilc-card .title').addClass( "isLearned" );
 	    $('.ilc-card #learned').attr("disabled", "disabled");
+	    $('.ilc-card #forgot').removeAttr("disabled")
 	}
 	else{
 	    $( '.ilc-card .title').removeClass( "isLearned" );
 	    $('.ilc-card #learned').removeAttr("disabled");
+	    $('.ilc-card #forgot').attr("disabled", "disabled");
 	}
     });
 }
@@ -39,8 +41,24 @@ $(document).ready(function () {
 		    contentType: 'application/json; charset=utf-8',
                     dataType: 'json',
 		});
-		//loadNewCard(level,uid);
 		$( '.ilc-card .title').addClass( "isLearned" );
+		$('.ilc-card #learned').attr("disabled", "disabled");
+		$('.ilc-card #forgot').removeAttr("disabled")
             });
+
+	    $( ".ilc-card #forgot" ).click(function() {
+                var uid =  $( '#userId').val();
+                var hid =  $( '.ilc-card #hanziId').val();
+                $.ajax({
+                    type: "POST",
+                    url: '/api/'+uid+'/removeLearned/'+hid,
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                });
+                $( '.ilc-card .title').removeClass( "isLearned" );
+		$('.ilc-card #learned').removeAttr("disabled");
+		$('.ilc-card #forgot').attr("disabled", "disabled");
+            });
+
 	}
 });
