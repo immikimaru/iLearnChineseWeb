@@ -1,6 +1,6 @@
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-module.exports = function(passport,mongoose) {
+module.exports = function(passport,mongoose,config) {
 
     var FbUsers = mongoose.model('fbs');
     
@@ -21,9 +21,9 @@ module.exports = function(passport,mongoose) {
     });
 
     passport.use(new FacebookStrategy({
-        clientID: "593836007363691",
-        clientSecret: "61a9d5e52c9384310e0a959e8f86cd43",
-        callbackURL: "http://ilc.spik.it/auth/facebook/callback"
+        clientID: config.facebook.clientID,
+        clientSecret: config.facebook.clientSecret,
+        callbackURL: config.facebook.callbackURL,
     },
 				      function(accessToken, refreshToken, profile, done) {
 					  db.collection('fbs', function(err, collection) {

@@ -4,6 +4,7 @@
 
 var express = require('express')
 , engine = require('ejs').__express
+, config = require('./config/env.json')
 , app = express()
 , mongo = require('mongodb')
 , mongoose = require('mongoose')
@@ -14,7 +15,6 @@ var express = require('express')
 , hanzi  = require('./modules/hanzi')
 , data = require('./config/database.js')(mongoose)
 , colors = require('colors');
-
 
 Server = mongo.Server,
 Db = mongo.Db,
@@ -53,7 +53,7 @@ db.open(function(err, db) {
                 populateDB();
             }
 	    else{
-		require('./config/passport')(passport,mongoose);		
+		require('./config/passport')(passport,mongoose,config);		
 	    }
         });
     }
