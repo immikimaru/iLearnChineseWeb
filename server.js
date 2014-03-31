@@ -15,6 +15,7 @@ var express = require('express')
 , FacebookStrategy = require('passport-facebook').Strategy
 , RedisStore = require('connect-redis')(session)
 , hanzi  = require('./modules/hanzi')
+, users = require('./modules/users')
 , data = require('./config/database.js')(mongoose)
 , colors = require('colors');
 
@@ -61,7 +62,7 @@ db.open(function(err, db) {
     }
 });
 
-require('./config/routes.js')(app, passport,hanzi,flashcardscat,menu);   
+require('./config/routes.js')(app, passport,hanzi,flashcardscat,menu,users);   
 app.listen(8088);
 console.log('Listening on port '.grey + app.get('port'));
 console.log('App launched'.green.bold);

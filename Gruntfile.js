@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 	pkg: grunt.file.readJSON('package.json'),
 	shell : {
             clean : {
-		command : 'rm -rf public/css/concat.css; rm -rf public/dist/* ; find . -name "*~" -delete ; cp public/js/flashcards.js public/js/dictionary.js public/dist/.'
+		command : 'rm -rf public/css/concat.css; rm -rf public/dist/* ; find . -name "*~" -delete ; cp public/js/flashcards.js public/js/dictionary.js public/js/landing-flashcards.js public/js/users.js public/dist/.'
             },
 	    startserver : {
                 command : 'forever stopall ; forever start server.js'
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 	},
 	concat: {
 	    js: {
-		src: ['public/js/*.js','!public/js/flashcards.js','!public/js/dictionary.js'],
+		src: ['public/js/*.js','!public/js/flashcards.js','!public/js/dictionary.js', '!public/js/users.js','!public/js/landing-flashcards.js'],
 		dest: 'public/dist/ilc.js'
 	    },
 	    css: {

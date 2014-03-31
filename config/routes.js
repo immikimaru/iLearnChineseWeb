@@ -1,4 +1,4 @@
-module.exports = function(app, passport,hanzi,flashcardscat,menu) {
+module.exports = function(app, passport,hanzi,flashcardscat,menu,users) {
 
     //API
     app.get('/api/hanzi', ensureAuthenticated, hanzi.findAll);
@@ -9,6 +9,8 @@ module.exports = function(app, passport,hanzi,flashcardscat,menu) {
     app.delete('/hanzi/:id', ensureAuthenticated,hanzi.deleteHanzi);
     app.post('/api/:userid/addLearned/:hid',ensureAuthenticated, hanzi.addHanziToUser);
     app.post('/api/:userid/removeLearned/:hid',ensureAuthenticated, hanzi.removeHanziToUser);
+    app.get('/api/users', ensureAuthenticated, users.findAll);
+    app.get('/api/:userid/count/:level',ensureAuthenticated,users.userCountByLevel);
 
     //Facebook
     app.get('/auth/facebook', passport.authenticate('facebook',{ scope : "email"}));
@@ -45,7 +47,7 @@ module.exports = function(app, passport,hanzi,flashcardscat,menu) {
                 fbId:req.user.fbId,
                 userId:req.user._id,
                 fname:req.user.name,
-                load:'',
+                load:'landing-flashcards.js',
 		menu:menu.Flashcards
             };
             res.render('dashboard.ejs', data);
@@ -67,7 +69,8 @@ module.exports = function(app, passport,hanzi,flashcardscat,menu) {
                         userId:req.user._id,
 			fbId : req.user.fbId,
                         fname:req.user.name,
-                        load:'flashcards.js'
+                        load:'flashcards.js',
+			menu:menu.Flashcards
                     };
                     res.render('dashboard.ejs', data);
                 });
@@ -90,6 +93,23 @@ module.exports = function(app, passport,hanzi,flashcardscat,menu) {
             res.render('dashboard.ejs', data);
         });
     });
+
+    //Profiles
+    app.get('/users',ensureAuthenticated, function(req, res){
+        res.render('users.ejs',{uid:req.user._id}, function(err, html){
+            var data = {
+                title: 'Users',
+                body: html,
+                fbId:req.user.fbId,
+                userId:req.user._id,
+                fname:req.user.name,
+                load:'users.js',
+                menu:menu.Dashboard
+            };
+            res.render('dashboard.ejs', data);
+        });
+    });
+
 
     //Add vocabulary
     app.get('/addHanzi',ensureAuthenticated, function(req, res){

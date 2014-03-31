@@ -5,4 +5,10 @@ $(document).ready(function () {
 	window.location = link;
     });
 
+    $('.ajst #notifications').popover({
+	html : true,
+	content : "3 notifications blq dd fdsfd sfds <br>Wait for improvements",
+	placement : "bottom"
+    });
+
 });
