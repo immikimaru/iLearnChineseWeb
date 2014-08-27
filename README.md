@@ -21,4 +21,4 @@ You just have to add ./config/env.json with following parameters:
     }
 }
 ```
-ILearnChinese by Pierre CANGEMI & Remi Bartel
+ILearnChinese by Pierre CANGEMI
